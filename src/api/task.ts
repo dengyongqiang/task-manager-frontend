@@ -32,12 +32,6 @@ export interface UpdateTaskRequest {
 
 export const getTasks = () => request.get<any, Task[]>('/tasks')
 export const createTask = (data: CreateTaskRequest) => request.post<any, Task>('/tasks', data)
-export const updateTask = (id: number, data: UpdateTaskRequest) => request.put<any, Task>(`/tasks/${id}`, data)
+export const updateTask = (id: number, data: UpdateTaskRequest) =>
+  request.put<any, Task>(`/tasks/${id}`, data)
 export const deleteTask = (id: number) => request.delete<any, void>(`/tasks/${id}`)
-
-
-
-
-
-
-
