@@ -80,9 +80,7 @@ const Dashboard = () => {
           size={'small'}
           style={{ width: 140 }}
           options={statusOptions}
-          onChange={(next: Task['status']) => {
-            handleStatusChange(record.id, next)
-          }}
+          onChange={(next: Task['status']) => handleStatusChange(record.id, next)}
         />
       ),
     },
