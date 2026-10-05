@@ -1,6 +1,16 @@
 import { deleteTask, getTasks, type Task, updateTask } from '../api/task.ts'
 import { useEffect, useState } from 'react'
-import { Button, message, Modal, Select, Space, Table, type TableColumnsType, Tag } from 'antd'
+import {
+  Button,
+  message,
+  Modal,
+  Select,
+  Space,
+  Table,
+  type TableColumnsType,
+  Tag,
+  Typography,
+} from 'antd'
 import TaskForm from '../components/TaskForm.tsx'
 
 const priorityColor: Record<Task['priority'], string> = {
@@ -8,6 +18,8 @@ const priorityColor: Record<Task['priority'], string> = {
   MEDIUM: 'orange',
   HIGH: 'red',
 }
+
+const { Text } = Typography
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState<Task[]>([])
@@ -117,6 +129,11 @@ const Dashboard = () => {
         >
           新建任务
         </Button>
+      </div>
+      <div style={{ textAlign: 'right', marginBottom: 8 }}>
+        <Text type="secondary">
+          共{tasks.length}个任务，已完成{tasks.filter((t) => t.status === 'COMPLETED').length}个
+        </Text>
       </div>
       <Table columns={columns} dataSource={tasks} rowKey="id" loading={loading} />
       <TaskForm
